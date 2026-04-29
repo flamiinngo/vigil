@@ -1,0 +1,7 @@
+{
+  "PrivateKeyPath": "node1-private.pem",
+  "Listen": ["tls://0.0.0.0:9001"],
+  "Peers": [],
+  "api_port": 9002,
+  "tcp_port": 7000
+}

@@ -1,0 +1,36 @@
+# Secrets
+.env
+.env.node2
+*.pem
+*.key
+
+# Runtime data (generated locally — not committed)
+wallets.json
+signals.json
+hot_tokens.json
+activity.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Node
+frontend/node_modules/
+frontend/build/
+frontend/.env.local
+
+# AXL binary
+axl/axl.exe
+axl/*.exe
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
