@@ -179,7 +179,7 @@ export default function JoinNetwork({ nodeCount = 1, signalCount = 0, walletCoun
         <div style={{ marginTop: '14px', fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>
           Clone Vigil and install Python dependencies:
         </div>
-        <CopyBlock code={`git clone https://github.com/YOUR_USERNAME/vigil
+        <CopyBlock code={`git clone https://github.com/flamiinngo/vigil
 cd vigil
 pip install -r requirements.txt`} />
         <div style={{ fontSize: '11px', color: C.textMuted, marginTop: '8px', lineHeight: '1.6' }}>
@@ -206,22 +206,31 @@ API_PORT=5050`} />
 
       <Step n={3} title="Start your AXL node" subtitle="Connect to the Gensyn P2P mesh — this broadcasts your observations to other nodes">
         <div style={{ marginTop: '14px', fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>
-          Create <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>axl-config.yaml</code> in the project root:
+          Build AXL from source (requires Go 1.25+):
         </div>
-        <CopyBlock label="axl-config.yaml" code={`listen_addr: "0.0.0.0:9005"
-rest_addr: "0.0.0.0:9006"
-bootstrap_peers:
-  - "BOOTSTRAP_PUBKEY@BOOTSTRAP_IP:9001"`} />
-        <div style={{ padding: '10px 14px', background: '#0c0a04', borderRadius: '6px', border: `1px solid ${C.yellow}20`, fontSize: '11px', color: C.textDim, lineHeight: '1.6', marginBottom: '10px' }}>
-          <span style={{ color: C.yellow }}>◈ Bootstrap peer</span> — get the bootstrap public key + IP from the network operator (the person running <code style={{ color: '#a78bfa' }}>vigil-node-1</code>). This links your node into the existing mesh.
+        <CopyBlock code={`git clone https://github.com/gensyn-ai/axl.git
+cd axl
+make build
+openssl genpkey -algorithm ed25519 -out private.pem`} />
+        <div style={{ fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px', marginTop: '10px' }}>
+          Create <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>node-config.json</code>:
+        </div>
+        <CopyBlock label="node-config.json" code={`{
+  "PrivateKeyPath": "private.pem",
+  "Peers": [
+    "tls://34.46.48.224:9001",
+    "tls://136.111.135.206:9001"
+  ],
+  "Listen": ["tls://0.0.0.0:9001"],
+  "api_port": 9002
+}`} />
+        <div style={{ padding: '10px 14px', background: '#030e06', borderRadius: '6px', border: `1px solid ${C.green}20`, fontSize: '11px', color: C.textDim, lineHeight: '1.6', marginBottom: '10px' }}>
+          <span style={{ color: C.green }}>◈ These are Gensyn's live bootstrap nodes.</span> Your node connects directly to the real Gensyn AXL network — no extra setup needed.
         </div>
         <div style={{ fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>Start AXL (Terminal 1):</div>
-        <CopyBlock code={`./axl -config axl-config.yaml`} />
-        <div style={{ fontSize: '11px', color: C.textMuted, marginTop: '8px', lineHeight: '1.6' }}>
-          AXL will print its public key on startup — share that with the network operator so they can add you as a bootstrap peer too.
-        </div>
+        <CopyBlock code={`./node -config node-config.json`} />
         <div style={{ marginTop: '8px', padding: '8px 14px', background: C.bg, borderRadius: '6px', border: `1px solid ${C.border}`, fontSize: '11px', color: C.textDim }}>
-          Also update <code style={{ color: '#a78bfa' }}>.env</code> with your AXL REST port: <code style={{ color: C.green }}>AXL_URL=http://localhost:9006</code>
+          AXL connects to Gensyn's network and starts listening. Your <code style={{ color: '#a78bfa' }}>.env</code> should have <code style={{ color: C.green }}>AXL_URL=http://localhost:9002</code>
         </div>
       </Step>
 

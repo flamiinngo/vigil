@@ -150,20 +150,33 @@ Scans Uniswap v3 on-chain activity and builds your local `wallets.json` (~2 minu
 
 ### Start your AXL node
 
-Create `axl/my-config.yaml`:
-
-```yaml
-listen_addr: "0.0.0.0:9005"
-rest_addr: "0.0.0.0:9006"
-bootstrap_peers:
-  - "BOOTSTRAP_PUBKEY@BOOTSTRAP_IP:9001"
-```
-
-Get the bootstrap peer address from an existing network operator.
+Build AXL from source (requires Go 1.25+):
 
 ```bash
+git clone https://github.com/gensyn-ai/axl.git
 cd axl
-.\axl.exe -config my-config.yaml
+make build
+openssl genpkey -algorithm ed25519 -out private.pem
+```
+
+Create `node-config.json`:
+
+```json
+{
+  "PrivateKeyPath": "private.pem",
+  "Peers": [
+    "tls://34.46.48.224:9001",
+    "tls://136.111.135.206:9001"
+  ],
+  "Listen": ["tls://0.0.0.0:9001"],
+  "api_port": 9002
+}
+```
+
+These are Gensyn's live bootstrap nodes — your node connects directly to the real AXL network.
+
+```bash
+./node -config node-config.json
 ```
 
 ### Start all services (4 terminals)
