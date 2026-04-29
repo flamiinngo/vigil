@@ -23,9 +23,8 @@ frontend/node_modules/
 frontend/build/
 frontend/.env.local
 
-# AXL binary
-axl/axl.exe
-axl/*.exe
+# AXL private keys only — binary is included so operators can run immediately
+axl/*.pem
 
 # OS
 .DS_Store
