@@ -1,0 +1,802 @@
+[
+  {
+    "address": "0x5b43453fce04b92e190f391a83136bfbecedefd1",
+    "score": 220,
+    "pool_diversity": 9,
+    "swap_count": 57,
+    "last_seen_block": 24981680,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x93793bd1f3e35a0efd098c30e486a860a0ef7551",
+    "score": 128,
+    "pool_diversity": 5,
+    "swap_count": 14,
+    "last_seen_block": 24981516,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x3ac6a63b03be94c0f7530f4ac8ce9fa08886d238",
+    "score": 100,
+    "pool_diversity": 3,
+    "swap_count": 20,
+    "last_seen_block": 24981598,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x448166a91e7bc50d0ac720c2fbed29e0963f5af8",
+    "score": 78,
+    "pool_diversity": 3,
+    "swap_count": 9,
+    "last_seen_block": 24981638,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xe743a49f04f2f77eb2d3b753ae3ad599de8cea84",
+    "score": 70,
+    "pool_diversity": 3,
+    "swap_count": 5,
+    "last_seen_block": 24981475,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xaeca9d89c25c20cb8375b3edabe9ace954f0408a",
+    "score": 70,
+    "pool_diversity": 3,
+    "swap_count": 5,
+    "last_seen_block": 24981404,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xbbde9f0c24b6f59d7e828bb4e129992be0cdc237",
+    "score": 68,
+    "pool_diversity": 3,
+    "swap_count": 4,
+    "last_seen_block": 24981683,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x3d9aae030b9661e3605b3acb5d0385ede221a0cc",
+    "score": 68,
+    "pool_diversity": 3,
+    "swap_count": 4,
+    "last_seen_block": 24981683,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x66c6778dedba51b87103c8543ee751e7cd960659",
+    "score": 66,
+    "pool_diversity": 3,
+    "swap_count": 3,
+    "last_seen_block": 24981439,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x3eff3dc5a4f5c65d28e88dc8fd22800979c9e7c6",
+    "score": 66,
+    "pool_diversity": 3,
+    "swap_count": 3,
+    "last_seen_block": 24981332,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x22b0351d445840db59b97df3808dd642dcb17e96",
+    "score": 66,
+    "pool_diversity": 3,
+    "swap_count": 3,
+    "last_seen_block": 24981180,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x147b966c6edbdb0503de6677bd305bbe79234718",
+    "score": 54,
+    "pool_diversity": 2,
+    "swap_count": 7,
+    "last_seen_block": 24981400,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xd9bc5189fa908e9626ff0713d6a979a639566f48",
+    "score": 50,
+    "pool_diversity": 1,
+    "swap_count": 15,
+    "last_seen_block": 24981664,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xb36ce3f521a1ff4b0cffb82ddd71f0a51fcf56ce",
+    "score": 50,
+    "pool_diversity": 2,
+    "swap_count": 5,
+    "last_seen_block": 24981511,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xc8df1a5953aa7f62a35ff1501e0c10eb3c33ebfe",
+    "score": 50,
+    "pool_diversity": 2,
+    "swap_count": 5,
+    "last_seen_block": 24981437,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xc24d30475eca133302192b502085a3cc124b0b9b",
+    "score": 50,
+    "pool_diversity": 2,
+    "swap_count": 5,
+    "last_seen_block": 24981367,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x6f0a91ef8adeb54db0e63be507747ab9a31d3926",
+    "score": 50,
+    "pool_diversity": 2,
+    "swap_count": 5,
+    "last_seen_block": 24981332,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x9359269cfbb80d154129dd9b0074cd7336b9a3a6",
+    "score": 48,
+    "pool_diversity": 2,
+    "swap_count": 4,
+    "last_seen_block": 24981683,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x56fc0708725a65ebb633efdaec931c0600a9face",
+    "score": 48,
+    "pool_diversity": 2,
+    "swap_count": 4,
+    "last_seen_block": 24981681,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x2d38964c3208251357dd6816470845a2ef5966d5",
+    "score": 48,
+    "pool_diversity": 2,
+    "swap_count": 4,
+    "last_seen_block": 24981376,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xc088045e91600edd337e3557cc1a42c96af303e1",
+    "score": 46,
+    "pool_diversity": 2,
+    "swap_count": 3,
+    "last_seen_block": 24981684,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xebedc8e9ff409b23dd251f87ccbffa8075f87255",
+    "score": 46,
+    "pool_diversity": 2,
+    "swap_count": 3,
+    "last_seen_block": 24981439,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x72bb8c608c4ea4a887266985e680a04c056f5b2a",
+    "score": 46,
+    "pool_diversity": 2,
+    "swap_count": 3,
+    "last_seen_block": 24981412,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x2ee36e41387f87b7e6f678a86d1e575b23b996f5",
+    "score": 46,
+    "pool_diversity": 2,
+    "swap_count": 3,
+    "last_seen_block": 24981123,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x58a497019644d8c383c8d3764c32ffd43506e836",
+    "score": 46,
+    "pool_diversity": 2,
+    "swap_count": 3,
+    "last_seen_block": 24980888,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xb3aa9923489bc2bfec323bf05346acd4afbc92a0",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981698,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x9eb9e9b2ba5c2665a16beaa8e137410358b6beaf",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981683,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xbf15724a9ffbdccceab8c98715b30a83c71e888c",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981683,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x124a1b2b995cc704555722ead2c595e584c6efbb",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981671,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x17023425685c331073d0546f95c8f283de029e96",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981640,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x1053ec0d66c4d1678099521b07f19a4532d33578",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981639,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xba0987077b3763cd93c1c57f3f7b9db7f62f57a0",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981574,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xdf8adfe10d4a4d9f0fc4d3e377a6e8d5730eb40c",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981463,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xcf57bfbc6e4acda88147634148ab17cbbe875ee4",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981452,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x555ce236c0220695b68341bc48c68d52210cc35b",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981388,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x6d5a38c29db3c5d80e0470c2140b492b4414f77c",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981384,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x893f4be53274353cd3379c87c8fd1cb4f8458f94",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981373,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x63fb0a85c115991a6a357d27a2b4722621626178",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981371,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x1e5d00ac5c003aaf27281b305e87e4cec20dc058",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981369,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xae1395c850f6cda4bc1df8341c92a528ebe1a6ae",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981347,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x5fa60dd1d2809604496d3315ab6f878bd59f64d4",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981332,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x36d63e35446baf55893a710cfe6dbdd300ece496",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981296,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x8316174a0f13c9aae7f2409a19ebd8ec8c69aaf4",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981174,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xa172577031eafd8b03dce022533863fe988159cd",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981173,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x00000000fd3a7b3fa5bcfa843c648714b11e089b",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24981002,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xd7e1236c08731c3632519dcd1a581bfe6876a3b2",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24980975,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x68f47b20d572965f2527fd79ee55b5650568e797",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24980891,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xff5910ab899d4d8ca4ff3b99f93a62bddbeda77e",
+    "score": 44,
+    "pool_diversity": 2,
+    "swap_count": 2,
+    "last_seen_block": 24980790,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xf204f3acb05c405c0010f2a2ecfa9fe61783f1d1",
+    "score": 40,
+    "pool_diversity": 1,
+    "swap_count": 10,
+    "last_seen_block": 24980951,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xa5a5491bca93dd4c076e4906e79e7673f4a5a142",
+    "score": 34,
+    "pool_diversity": 1,
+    "swap_count": 7,
+    "last_seen_block": 24981683,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xeb6a36195e5b127846130e14b461c7ca83e19fb0",
+    "score": 34,
+    "pool_diversity": 1,
+    "swap_count": 7,
+    "last_seen_block": 24981664,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xabb2acd3be814a80e502575d6c1dc5f789e9cd10",
+    "score": 32,
+    "pool_diversity": 1,
+    "swap_count": 6,
+    "last_seen_block": 24981641,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x061e01c494e3e365a51354fa2173e4ad345e978d",
+    "score": 32,
+    "pool_diversity": 1,
+    "swap_count": 6,
+    "last_seen_block": 24981575,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xfe0c760cbcb9da239b9ba805f0aeaed3be84f65a",
+    "score": 32,
+    "pool_diversity": 1,
+    "swap_count": 6,
+    "last_seen_block": 24981506,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xd5b7c7969eabaf5f10ebe440b7e89dd16fa51ea8",
+    "score": 32,
+    "pool_diversity": 1,
+    "swap_count": 6,
+    "last_seen_block": 24981461,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x87aeb03aefef5224513ebbc28eff82fbccd63298",
+    "score": 30,
+    "pool_diversity": 1,
+    "swap_count": 5,
+    "last_seen_block": 24981653,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x370a7e2d300c14d79d4a7ee07aaca46c4b3012cf",
+    "score": 30,
+    "pool_diversity": 1,
+    "swap_count": 5,
+    "last_seen_block": 24981640,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x331d9a049d496385998067abf6cbb6371c8d2466",
+    "score": 30,
+    "pool_diversity": 1,
+    "swap_count": 5,
+    "last_seen_block": 24981636,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xca7ded7e4f4ba8ab3b10009236ae6d1b95094589",
+    "score": 30,
+    "pool_diversity": 1,
+    "swap_count": 5,
+    "last_seen_block": 24981589,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x30a1b724c9dfe2e12a19ed84878312d199d1519e",
+    "score": 30,
+    "pool_diversity": 1,
+    "swap_count": 5,
+    "last_seen_block": 24981061,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x56c262027e0de4aea31d2489529cb25d23e58a8b",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981696,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x1a5918dd41efcc34aba03c40b86242d10bc398fa",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981684,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x0f0e1236dc698c51e3b0bf80f7cf4f72484f9357",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981667,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x18dd3c14e34c1bc379f7538068c59160d9f68e25",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981661,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xd4c3ea09a9a6f543574ece8bbb6d0d12a24939c9",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981626,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x54d209d9d224a615e0e5f0476644886897b75e45",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981487,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x3597a5ca61a87699c650f9536817dfcc4fb1790d",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981414,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xdfba0cf35cc41fac054cc6364194087885eae919",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981411,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x4e946886bdae1c61efe01f48a45f3530c7f479b5",
+    "score": 28,
+    "pool_diversity": 1,
+    "swap_count": 4,
+    "last_seen_block": 24981350,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xf1eca0f90b1c8dba795ff96d3a0c8ecf499c27eb",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981683,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x7f77bad9eb06373fe3aee84f85a9d701ff820eeb",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981676,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xec8e60f1322621d2e89461000f460483968e8568",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981620,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xa5c0e8f612b84c60579ee8b54aabc908c4f4b538",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981533,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xad35ed1cfe7c17c7b06c5c5d0672c57da4925299",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981437,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xa0b9faac81f34a849d57516a0193b37ec23e70b8",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981421,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xf69ebaabe6cd5114ed9c91e5c86d65459e84f253",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981392,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xd2700e7bbe0a8af6d6c5b3f61d27855daa425a53",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981249,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x035ab7a8333ccd0fe71c2075c6018deae08e77a0",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981189,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xe7e62e07a96f1ed2a31d9115d069f9d92f7dbce0",
+    "score": 26,
+    "pool_diversity": 1,
+    "swap_count": 3,
+    "last_seen_block": 24981018,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xffba78a30836ffb177e1195ada6ed0fd5ae6bef5",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981688,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x119d01625a1e1fbe1a7dfba827fb27d440dd7d27",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981667,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x8396998f6caf1609941f2ea6ebddc52a4de4fe7f",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981661,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x6b5c948172c236756eaef6629f8cdc6ecdde0bce",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981658,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x828e74ce52382805ec0ca66355eeb359c543cc52",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981653,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xa67d7eb4dc68fa6ce8e34ef8cadaf075b9893fbb",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981644,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x8fbbc54d49b23f5b397dfe62ad2fb0e09cbe9379",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981568,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x6ef97c6b3e692056db17f5f4a3e017d368354edf",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981530,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xeb89055e16ae1c1e42ad6770a7344ff5c7b4f31d",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981492,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x3d53c172c5fa064fdaa5d7fb661fb4281fe05cf1",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981442,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x17fb4a31b8a468cd5be0ea6e037781eb5f19643e",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981440,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x7ce444586f810f1cee1220748382e215fb80be3f",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981439,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x867bdc57d1b071fe5a9f670dd70b91e4269814d3",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981439,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x25a04b01f4469a0af4705cfe7f6054c1f7fe5846",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981438,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xc378ad7f78ebe7c29f98ace118896fba1105536f",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981437,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x7194f3933b0a01b23be11c4c9ac66f74c3ee281e",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981425,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x4be3c60ca4bc907aa0baf260361fe09d87173813",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981419,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x50f91469cedb4a0976620677bbe52f373028cf02",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981408,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x0827227e3e296fa65e273f5a5fc42f138c3a1f7b",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981399,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0x81dc771e308c76c3e06f635abed7fb24830fb824",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981391,
+    "discovered_at": 1777417408
+  },
+  {
+    "address": "0xd6f4567bfa29bc70b26dccaeb07e5868905d667c",
+    "score": 24,
+    "pool_diversity": 1,
+    "swap_count": 2,
+    "last_seen_block": 24981391,
+    "discovered_at": 1777417408
+  }
+]

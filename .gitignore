@@ -5,7 +5,6 @@
 *.key
 
 # Runtime data (generated locally — not committed)
-wallets.json
 signals.json
 hot_tokens.json
 activity.json
