@@ -12,12 +12,12 @@ We scan Uniswap v3 Swap events (`eth_getLogs`) across 18 top pools to discover a
 Pools scanned: USDC/WETH 0.05%, USDC/WETH 0.3%, USDT/WETH 0.05%, USDT/WETH 0.3%, WBTC/WETH 0.3%, WBTC/WETH 0.05%, WBTC/USDC, stETH/WETH, LINK/WETH, UNI/WETH, MKR/WETH, AAVE/WETH, CRV/WETH, MATIC/WETH, PEPE/WETH, SHIB/WETH, DAI/USDC, DAI/WETH
 
 **2. Signal Enrichment (uniswap.py)**
-When consensus fires, we query Uniswap v3 on-chain data for every signal token:
-- Current price (USD) — derived from Uniswap v3 pool slot0 sqrtPriceX96
-- Liquidity (USD) — from pool liquidity + token0/token1 reserves; signals below $5k dropped
-- 24h volume (USD) — from Uniswap v3 pool swap event aggregation
-- 24h price change (%) — compared against 24h-ago block price
-- Best Uniswap v3 pool address (highest liquidity across fee tiers 100/500/3000/10000)
+When consensus fires, we enrich every signal token with live Uniswap v3 on-chain data:
+- Best pool — UniswapV3Factory.getPool(token, WETH, fee) across all four fee tiers (100/500/3000/10000); highest in-range liquidity wins
+- Current price (USD) — decoded from pool slot0 sqrtPriceX96 (Q64.96 fixed point → WETH price → USD via USDC/WETH reference pool)
+- Liquidity (USD) — WETH.balanceOf(pool) × ETH price × 2; signals below $5k dropped
+- 24h volume (USD) — DexScreener (computing 24h volume from Swap events requires scanning thousands of blocks per call — impractical in real time on free RPCs)
+- Pool address returned with every signal so users can verify on-chain
 
 **3. Direct Swap Links**
 Every verified signal includes a pre-built Uniswap swap URL:
