@@ -24,7 +24,7 @@ export default function WalletLeaderboard() {
   const [wallets, setWallets] = useState([]);
 
   useEffect(() => {
-    fetch('/wallets.json')
+    fetch(`${process.env.REACT_APP_API_URL || ''}/wallets.json`)
       .then(r => r.ok ? r.json() : [])
       .then(d => setWallets(Array.isArray(d) ? d.slice(0, 20) : []))
       .catch(() => {});

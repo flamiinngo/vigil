@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const AXL_STATUS_URL = '/axl-status';
+const AXL_STATUS_URL = `${process.env.REACT_APP_API_URL || ''}/axl-status`;
 const POLL_INTERVAL = 8000;
 
 const s = {

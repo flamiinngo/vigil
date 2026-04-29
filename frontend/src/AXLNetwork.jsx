@@ -230,7 +230,7 @@ export default function AXLNetwork() {
   useEffect(() => {
     const load = async () => {
       try {
-        const r = await fetch('/network');
+        const r = await fetch(`${(process.env.REACT_APP_API_URL || '')}/network`);
         if (r.ok) setData(await r.json());
       } catch (_) {}
     };

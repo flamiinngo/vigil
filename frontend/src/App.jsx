@@ -8,6 +8,7 @@ import MarketBar from './MarketBar';
 import Logo from './Logo';
 import JoinNetwork from './JoinNetwork';
 import AXLNetwork from './AXLNetwork';
+import API from './config';
 
 const C = {
   bg: '#070710', surface: '#0d0d1a', border: '#1a1a2e',
@@ -80,7 +81,7 @@ export default function App() {
   useEffect(() => {
     const load = async () => {
       try {
-        const r = await fetch('/axl-status');
+        const r = await fetch(`${API}/axl-status`);
         if (r.ok) setAxlStatus(await r.json());
       } catch (_) {}
     };
@@ -90,7 +91,7 @@ export default function App() {
   useEffect(() => {
     const load = async () => {
       try {
-        const r = await fetch('/signals.json');
+        const r = await fetch(`${API}/signals.json`);
         if (!r.ok) return;
         setSignals(await r.json());
         setLastFetch(new Date());
@@ -102,7 +103,7 @@ export default function App() {
   useEffect(() => {
     const load = async () => {
       try {
-        const r = await fetch('/hot');
+        const r = await fetch(`${API}/hot`);
         if (!r.ok) return;
         const d = await r.json();
         setHotTokens(Array.isArray(d) ? d : []);
@@ -114,7 +115,7 @@ export default function App() {
   useEffect(() => {
     const load = async () => {
       try {
-        const r = await fetch('/activity');
+        const r = await fetch(`${API}/activity`);
         if (!r.ok) return;
         const d = await r.json();
         setActivities(Array.isArray(d) ? d : []);
