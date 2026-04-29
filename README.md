@@ -290,12 +290,75 @@ vigil/
 
 ---
 
+## What Vigil Watches Today
+
+| Dimension | Current Scope |
+|---|---|
+| **Network** | Ethereum mainnet |
+| **Events** | ERC-20 Transfer events — live WebSocket + HTTP polling fallback |
+| **Wallets** | 100 independently discovered smart money wallets per node, scored by Uniswap v3 pool diversity |
+| **Discovery** | Uniswap v3 Swap events across 18 top pools — `tx.from` gives real EOAs, not router contracts |
+| **Filtered out** | Stablecoins (USDC, USDT, DAI), wrapped natives (WETH, WBTC), noise tokens |
+| **Consensus window** | 20 minutes — 2+ distinct wallets accumulating the same token |
+| **Signal enrichment** | Live Uniswap v3 pool data — price from slot0 sqrtPriceX96, liquidity from WETH.balanceOf(pool) |
+
+---
+
+## Where This Goes
+
+The intelligence layer is built to expand. The AXL mesh is chain-agnostic — it moves encrypted observations between nodes regardless of what chain those observations came from. Everything above the mesh is pluggable.
+
+### Phase 1 — More chains, same mesh
+
+Every EVM chain with active smart money becomes a new watcher module. Nodes announce which chains they watch via AXL peer metadata. The mesh stays constant.
+
+| Chain | Why it matters |
+|---|---|
+| Base | Highest retail smart money activity after Ethereum mainnet |
+| Arbitrum | Deep DeFi liquidity, established whale wallets |
+| Optimism | Growing ecosystem, distinct wallet set from mainnet |
+| Polygon | High-frequency traders not active on mainnet |
+
+Cross-chain signal: the same wallet accumulating a token on Ethereum AND Base — detected by two nodes watching different chains, both broadcasting over the same AXL mesh — fires a stronger consensus event than either chain alone.
+
+### Phase 2 — More signal types
+
+ERC-20 accumulation is one signal. The same architecture generalises to anything a wallet does on-chain.
+
+- **LP movements** — smart money adding or removing Uniswap v3 liquidity (pre-pump setup)
+- **NFT accumulation** — coordinated buying into the same collection before a floor move
+- **Governance coordination** — wallets voting the same way before a protocol decision lands publicly
+- **Lending positions** — wallets opening identical collateral positions on Aave or Compound
+- **Bridge activity** — capital moving from chain to chain before a catalyst
+
+Each new signal type is a new subscriber on the same consensus engine. Nodes choose which modules to run.
+
+### Phase 3 — Node reputation
+
+Not all nodes are equal. A node that has been online for six months with consistently accurate signals should carry more weight than one that joined yesterday.
+
+- Nodes accumulate a reputation score based on signal accuracy over time
+- High-reputation nodes tip consensus faster — lower threshold to fire
+- Bad actors who flood noise get downweighted automatically
+- Gensyn AXL peer identity is the natural anchor for reputation — the mesh already knows who you are
+
+### Phase 4 — On-chain consensus
+
+When enough nodes agree, fire a Uniswap v4 hook. Smart contracts react to decentralized intelligence in real time — no oracle, no intermediary.
+
+- A v4 hook receives the consensus signal and executes protocol logic automatically
+- Example: a vault that opens a position the moment the Vigil network reaches consensus
+- The mesh becomes a decentralized oracle that existing infrastructure can plug into
+
+---
+
 ## Roadmap
 
 - **Alert webhooks** — Telegram and Discord notifications when signals fire
-- **Signal performance tracking** — historical accuracy of past signals
+- **Signal performance tracking** — measure historical accuracy, build node reputation scores
+- **Multi-chain watchers** — Base, Arbitrum, Optimism running over the same AXL mesh
 - **Uniswap v4 hooks** — trigger on-chain logic the moment network consensus is reached
-- **Node reputation** — score operators by signal accuracy over time
+- **Cross-chain consensus** — same wallet accumulating across chains = amplified signal weight
 - **Mobile dashboard** — responsive interface for traders on the go
 
 ---
@@ -304,7 +367,7 @@ vigil/
 
 Vigil is open and permissionless. If you want to run a node and contribute to the network, the Join Network tab in the dashboard walks through the full setup. The only requirement is a machine with Python and Node.js.
 
-The network gets more valuable with every independent operator. If you're running a node, open an issue or PR — node operators are the network.
+The network gets more valuable with every independent operator. Every new node brings its own independently discovered wallet set, watches its own chain slice, and strengthens consensus for everyone. If you're running a node, open an issue or PR — node operators are the network.
 
 ---
 
