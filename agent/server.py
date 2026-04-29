@@ -15,7 +15,7 @@ SIGNALS_FILE    = ROOT / "signals.json"
 HOT_TOKENS_FILE = ROOT / "hot_tokens.json"
 ACTIVITY_FILE   = ROOT / "activity.json"
 WALLETS_FILE    = ROOT / "wallets.json"
-PORT            = int(os.getenv("API_PORT", 5050))
+PORT            = int(os.getenv("PORT") or os.getenv("API_PORT") or 5050)
 
 app = Flask(__name__)
 
