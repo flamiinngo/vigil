@@ -21,7 +21,11 @@ load_dotenv()
 AXL_BASE_URL = os.getenv("AXL_URL", "http://amusing-gentleness.railway.internal:9002")
 NODE_ID = os.getenv("NODE_ID", "vigil-node-1")
 
-# Cache of peer IDs discovered from /topology
+# Remote Vigil node HTTP APIs — fetch their AXL public keys so we can send to them
+# e.g. VIGIL_NETWORK_URL=https://viigil.up.railway.app
+REMOTE_VIGIL_URLS = [u.strip() for u in os.getenv("VIGIL_NETWORK_URL", "").split(",") if u.strip()]
+
+# Cache of peer IDs discovered from /topology + remote nodes
 _known_peers: list[str] = []
 _last_topology_refresh: float = 0.0
 TOPOLOGY_REFRESH_INTERVAL = 30.0  # seconds
@@ -30,9 +34,23 @@ TOPOLOGY_REFRESH_INTERVAL = 30.0  # seconds
 _seen_message_keys: set = set()
 
 
+async def _fetch_remote_peer_key(url: str) -> str | None:
+    """Fetch the AXL public key of a remote Vigil node via its /axl-status endpoint."""
+    try:
+        async with httpx.AsyncClient(timeout=5.0) as client:
+            r = await client.get(f"{url.rstrip('/')}/axl-status")
+            data = r.json()
+            key = data.get("our_public_key", "")
+            if data.get("online") and key:
+                return key
+    except Exception:
+        pass
+    return None
+
+
 async def refresh_topology() -> list[str]:
     """
-    Fetch connected peers from AXL /topology.
+    Fetch connected peers from AXL /topology + any remote Vigil nodes.
     Returns a list of peer_id strings (64-char hex ed25519 public keys).
     """
     global _known_peers, _last_topology_refresh
@@ -43,17 +61,13 @@ async def refresh_topology() -> list[str]:
             response.raise_for_status()
             data = response.json()
 
-        # Actual /topology response fields (from AXL source):
-        # { our_ipv6, our_public_key, peers: [...], tree: [...] }
-        # Each peer in the peers array contains the peer's public key
         peers_raw = data.get("peers", [])
+        our_key = data.get("our_public_key", "")
         peer_ids = []
         for p in peers_raw:
             if isinstance(p, str):
-                # Some versions return a flat list of public key strings
                 peer_ids.append(p)
             elif isinstance(p, dict):
-                # Dict — try known field names for the public key
                 pid = (p.get("public_key")
                        or p.get("PublicKey")
                        or p.get("peer_id")
@@ -61,10 +75,16 @@ async def refresh_topology() -> list[str]:
                 if pid:
                     peer_ids.append(pid)
 
+        # Discover remote Vigil nodes and add their AXL keys
+        for url in REMOTE_VIGIL_URLS:
+            remote_key = await _fetch_remote_peer_key(url)
+            if remote_key and remote_key != our_key and remote_key not in peer_ids:
+                peer_ids.append(remote_key)
+                print(f"[MESSENGER] Discovered remote Vigil node: {remote_key[:12]}... via {url}")
+
         _known_peers = peer_ids
         _last_topology_refresh = time.time()
 
-        our_key = data.get("our_public_key", "")
         if peer_ids:
             print(f"[MESSENGER] AXL online — our key: {our_key[:12]}... "
                   f"peers: {len(peer_ids)}")
