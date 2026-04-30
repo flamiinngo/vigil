@@ -4,7 +4,7 @@
 #
 # Method:
 #   1. Query eth_getLogs for Uniswap v3 Swap events on top pools
-#   2. Collect unique transaction hashes → fetch tx.from (actual user EOA)
+#   2. Collect unique transaction hashes -> fetch tx.from (actual user EOA)
 #   3. Score wallets by pool diversity + swap frequency
 #   4. Write top wallets to wallets.json
 #
@@ -98,7 +98,7 @@ async def discover_wallets(blocks_back: int = 3000, top_n: int = 40) -> list[dic
     print(f"[DISCOVER] Connecting to {rpc_url}...")
     print(f"[DISCOVER] Scanning last {blocks_back} blocks across {len(TOP_POOLS)} pools...")
 
-    # tx_hash → {pools: set, block: int}
+    # tx_hash -> {pools: set, block: int}
     tx_map: dict[str, dict] = {}
 
     async with httpx.AsyncClient(timeout=30.0) as client:
@@ -110,7 +110,7 @@ async def discover_wallets(blocks_back: int = 3000, top_n: int = 40) -> list[dic
             current_block = await get_current_block(client, rpc_url)
 
         from_block = current_block - blocks_back
-        print(f"[DISCOVER] Block range: {from_block} → {current_block}")
+        print(f"[DISCOVER] Block range: {from_block} -> {current_block}")
 
         for pool in TOP_POOLS:
             pool_addr = pool["address"]
