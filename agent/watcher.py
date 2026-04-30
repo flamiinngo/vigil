@@ -23,6 +23,7 @@ WALLETS_FILE = Path(__file__).parent.parent / "wallets.json"
 # Public WebSocket RPCs — rotates on failure
 WS_URLS = [
     os.getenv("ETH_WS_URL", "wss://ethereum.publicnode.com"),
+    "wss://eth.drpc.org",
     "wss://eth.llamarpc.com",
     "wss://mainnet.gateway.tenderly.co",
 ]
@@ -107,7 +108,15 @@ def decode_address(padded: str) -> str | None:
     return "0x" + padded[-40:].lower()
 
 
-_HTTP_FALLBACKS = ["https://1rpc.io/eth", "https://eth.llamarpc.com", "https://ethereum-rpc.publicnode.com"]
+_HTTP_FALLBACKS = [
+    HTTP_RPC,
+    "https://rpc.ankr.com/eth",
+    "https://eth.drpc.org",
+    "https://cloudflare-eth.com",
+    "https://eth.llamarpc.com",
+    "https://ethereum-rpc.publicnode.com",
+    "https://1rpc.io/eth",
+]
 
 def _http_rpc(payload: dict) -> dict:
     """Synchronous HTTP JSON-RPC call — tries HTTP_RPC then fallbacks."""
