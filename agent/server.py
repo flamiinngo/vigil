@@ -58,11 +58,7 @@ def activity():
 
 @app.route("/axl-status")
 def axl_status():
-    axl_url = (
-        os.getenv("AXL_URL")
-        or ("http://amusing-gentleness.railway.internal:9002" if os.getenv("RAILWAY_ENVIRONMENT") else None)
-        or "http://localhost:9002"
-    )
+    axl_url = os.getenv("AXL_URL", "http://amusing-gentleness.railway.internal:9002")
     try:
         with urllib.request.urlopen(f"{axl_url}/topology", timeout=3) as r:
             topo = json.loads(r.read())
