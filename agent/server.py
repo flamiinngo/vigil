@@ -180,8 +180,21 @@ def network():
             token_nodes.setdefault(t, set()).add(n)
     cross_node = sum(1 for nodes_set in token_nodes.values() if len(nodes_set) >= 2)
 
+    # All contributing nodes (from activity log — includes remote nodes not in AXL topology)
+    all_contributors = [
+        {
+            "node_id": nid,
+            "broadcasts": s["broadcasts"],
+            "unique_tokens": len(s["tokens"]),
+            "signals": sum(1 for sig in signals if nid in sig.get("node_ids", [])),
+        }
+        for nid, s in sorted(node_stats.items(), key=lambda x: -x[1]["broadcasts"])
+        if nid
+    ]
+
     return jsonify({
         "nodes":       nodes,
+        "contributors": all_contributors,
         "messages":    messages[:40],
         "cross_node_events": cross_node,
         "total_broadcasts":  len(activities),

@@ -171,7 +171,7 @@ function MessageRow({ msg, isNew }) {
 }
 
 export default function AXLNetwork() {
-  const [data, setData] = useState({ nodes: [], messages: [], cross_node_events: 0, total_broadcasts: 0, consensus_count: 0 });
+  const [data, setData] = useState({ nodes: [], contributors: [], messages: [], cross_node_events: 0, total_broadcasts: 0, consensus_count: 0 });
   const [packets, setPackets] = useState([]);
   const prevMsgLen = useRef(0);
   const packetId = useRef(0);
@@ -356,6 +356,32 @@ export default function AXLNetwork() {
           ))}
         </div>
       </div>
+
+      {/* Node Contributions */}
+      {data.contributors.length > 0 && (
+        <div style={{ padding: '16px 24px', borderBottom: `1px solid ${C.border}`, background: C.bg, flexShrink: 0 }}>
+          <div style={{ fontSize: '9px', fontWeight: '700', color: C.textMuted, letterSpacing: '0.14em', marginBottom: '10px' }}>
+            NODE CONTRIBUTIONS — {data.contributors.length} OPERATOR{data.contributors.length !== 1 ? 'S' : ''}
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 80px 80px 80px', gap: '6px' }}>
+            {['NODE ID', 'BROADCASTS', 'TOKENS', 'SIGNALS'].map(h => (
+              <div key={h} style={{ fontSize: '9px', color: C.textMuted, letterSpacing: '0.1em', paddingBottom: '4px', borderBottom: `1px solid ${C.border}` }}>{h}</div>
+            ))}
+            {data.contributors.map((c, i) => (
+              <React.Fragment key={c.node_id}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: C.text, fontWeight: '600' }}>
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: i === 0 ? C.green : C.purple, flexShrink: 0 }} />
+                  {c.node_id}
+                  {i === 0 && <span style={{ fontSize: '8px', color: C.green, background: C.green + '15', border: `1px solid ${C.green}30`, padding: '1px 4px', borderRadius: '3px', fontWeight: '700' }}>TOP</span>}
+                </div>
+                <div style={{ fontSize: '13px', fontWeight: '700', color: C.purple }}>{c.broadcasts}</div>
+                <div style={{ fontSize: '13px', fontWeight: '700', color: C.yellow }}>{c.unique_tokens}</div>
+                <div style={{ fontSize: '13px', fontWeight: '700', color: C.green }}>{c.signals}</div>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Message stream */}
       <div style={{ flex: 1, overflowY: 'auto' }}>

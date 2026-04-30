@@ -7,6 +7,10 @@ const C = {
   text: '#e2e8f0', textDim: '#64748b', textMuted: '#334155',
 };
 
+const DASHBOARD_URL = process.env.REACT_APP_API_URL
+  ? window.location.origin
+  : 'http://localhost:3000';
+
 function CopyBlock({ code, label }) {
   const [copied, setCopied] = useState(false);
   function copy() {
@@ -136,18 +140,18 @@ export default function JoinNetwork({ nodeCount = 1, signalCount = 0, walletCoun
               <Pill color={C.blue}>PERMISSIONLESS</Pill>
             </div>
             <p style={{ fontSize: '14px', color: C.textDim, lineHeight: '1.7', maxWidth: '560px' }}>
-              Vigil is a decentralized on-chain intelligence network. Each node watches a slice of smart wallets on Ethereum and shares observations over <strong style={{ color: C.purple }}>Gensyn AXL</strong> — an encrypted P2P mesh. The more nodes, the stronger the signal.
+              Vigil is a decentralized on-chain intelligence network. Each node watches a slice of smart wallets on Ethereum and shares observations over <strong style={{ color: C.purple }}>Gensyn AXL</strong> — an encrypted P2P mesh. You don't need to run a dashboard — just connect and your node strengthens every signal the network produces.
             </p>
           </div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', marginTop: '24px' }}>
           {[
-            { label: 'Active nodes',   value: nodeCount,    color: C.green },
-            { label: 'Wallets tracked', value: walletCount, color: C.blue },
-            { label: 'Signals fired',  value: signalCount,  color: C.purple },
-            { label: 'Setup time',     value: '~10 min',    color: C.yellow },
-            { label: 'Cost',           value: 'Free',       color: C.green },
+            { label: 'Active nodes',    value: nodeCount,    color: C.green },
+            { label: 'Wallets tracked', value: walletCount,  color: C.blue },
+            { label: 'Signals fired',   value: signalCount,  color: C.purple },
+            { label: 'Setup time',      value: '~10 min',    color: C.yellow },
+            { label: 'Cost',            value: 'Free',       color: C.green },
           ].map(s => (
             <div key={s.label} style={{ background: C.bg, borderRadius: '8px', padding: '12px 14px', border: `1px solid ${C.border}` }}>
               <div style={{ fontSize: '14px', fontWeight: '700', color: s.color }}>{s.value}</div>
@@ -157,63 +161,74 @@ export default function JoinNetwork({ nodeCount = 1, signalCount = 0, walletCoun
         </div>
       </div>
 
+      {/* Identity callout */}
+      <div style={{
+        padding: '16px 20px', marginBottom: '24px',
+        background: '#070d14', border: `1px solid ${C.blue}30`,
+        borderRadius: '10px',
+      }}>
+        <div style={{ fontSize: '12px', fontWeight: '700', color: C.blue, marginBottom: '8px' }}>◈ Your node identity</div>
+        <div style={{ fontSize: '11px', color: C.textDim, lineHeight: '1.7' }}>
+          Every node has two identifiers:<br />
+          <span style={{ color: C.text }}>NODE_ID</span> — your human-readable name (e.g. <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 4px', borderRadius: '3px' }}>vigil-node-3</code>). This appears in the <strong>AXL Network</strong> tab when your node broadcasts an observation.<br />
+          <span style={{ color: C.text }}>AXL Public Key</span> — your cryptographic identity on the Gensyn mesh. Printed in the AXL startup log as <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 4px', borderRadius: '3px' }}>Our Public Key: xxxx...</code>. Unique per node, generated locally, never shared.
+        </div>
+        <div style={{ marginTop: '10px', padding: '8px 12px', background: C.bg, borderRadius: '6px', border: `1px solid ${C.border}`, fontSize: '11px', color: C.textDim }}>
+          Once your node broadcasts an observation, your NODE_ID and broadcast count appear in the <strong style={{ color: C.blue }}>AXL Network → Node Contributions</strong> section of the live dashboard.
+        </div>
+      </div>
+
       {/* Prerequisites */}
       <div style={{ marginBottom: '28px' }}>
         <div style={{ fontSize: '11px', fontWeight: '700', color: C.textDim, letterSpacing: '0.14em', marginBottom: '14px' }}>PREREQUISITES</div>
         <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: '10px', padding: '4px 16px' }}>
           <InfoRow icon="⬡" label="Python" value="3.10 or higher" color={C.green} />
-          <InfoRow icon="⬡" label="Node.js" value="18 or higher" color={C.green} />
-          <InfoRow icon="⬡" label="Ethereum RPC" value="Any public endpoint works" color={C.blue} />
-          <InfoRow icon="⬡" label="Gensyn AXL binary" value="Download from Gensyn" color={C.yellow} />
-          <InfoRow icon="⬡" label="Git" value="To clone the repository" color={C.textDim} />
+          <InfoRow icon="⬡" label="Go" value="1.21+ (to build AXL from source)" color={C.green} />
+          <InfoRow icon="⬡" label="Ethereum RPC" value="Any free public endpoint works" color={C.blue} />
+          <InfoRow icon="⬡" label="Git" value="To clone the repositories" color={C.textDim} />
         </div>
         <div style={{ marginTop: '10px', padding: '10px 14px', background: '#0a0a14', borderRadius: '6px', border: `1px solid ${C.border}`, fontSize: '11px', color: C.textDim, lineHeight: '1.6' }}>
-          <span style={{ color: C.yellow }}>◈ No paid RPC required.</span> Public endpoints like <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>https://ethereum-rpc.publicnode.com</code> work out of the box.
+          <span style={{ color: C.yellow }}>◈ No paid RPC required.</span> Free endpoints like <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>wss://ethereum.publicnode.com</code> work out of the box.
         </div>
       </div>
 
       {/* Steps */}
       <div style={{ fontSize: '11px', fontWeight: '700', color: C.textDim, letterSpacing: '0.14em', marginBottom: '14px' }}>SETUP GUIDE</div>
 
-      <Step n={1} title="Clone the repository" subtitle="Get the source code onto your machine">
+      <Step n={1} title="Clone the repository" subtitle="Get the Vigil source code">
         <div style={{ marginTop: '14px', fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>
           Clone Vigil and install Python dependencies:
         </div>
         <CopyBlock code={`git clone https://github.com/flamiinngo/vigil
 cd vigil
 pip install -r requirements.txt`} />
-        <div style={{ fontSize: '11px', color: C.textMuted, marginTop: '8px', lineHeight: '1.6' }}>
-          Then install the frontend dependencies:
-        </div>
-        <CopyBlock code={`cd frontend
-npm install
-cd ..`} />
       </Step>
 
       <Step n={2} title="Configure your environment" subtitle="Create a .env file in the project root">
         <div style={{ marginTop: '14px', fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>
-          Create a file named <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>.env</code> in the project root:
+          Create <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>.env</code> in the project root — pick a unique NODE_ID:
         </div>
-        <CopyBlock label=".env" code={`ETH_RPC=https://ethereum-rpc.publicnode.com
+        <CopyBlock label=".env" code={`ETH_WS_URL=wss://ethereum.publicnode.com
+ETH_RPC_URL=https://ethereum-rpc.publicnode.com
 NODE_ID=vigil-node-3
 AXL_URL=http://localhost:9002
-API_PORT=5050`} />
+VIGIL_NETWORK_URL=https://viigil.up.railway.app`} />
         <div style={{ padding: '10px 14px', background: '#0a0a14', borderRadius: '6px', border: `1px solid ${C.border}`, fontSize: '11px', color: C.textDim, lineHeight: '1.6' }}>
-          <div style={{ marginBottom: '5px' }}><span style={{ color: C.yellow }}>NODE_ID</span> — pick a unique name. The network already has <code style={{ color: '#a78bfa' }}>vigil-node-1</code> and <code style={{ color: '#a78bfa' }}>vigil-node-2</code>, so start from <code style={{ color: '#a78bfa' }}>vigil-node-3</code>.</div>
-          <div><span style={{ color: C.yellow }}>AXL_URL</span> — the local AXL REST port you'll configure in Step 3.</div>
+          <div style={{ marginBottom: '6px' }}><span style={{ color: C.yellow }}>NODE_ID</span> — choose any name. Use <code style={{ color: '#a78bfa' }}>vigil-node-3</code> or higher — lower numbers are already running on the network.</div>
+          <div><span style={{ color: C.yellow }}>VIGIL_NETWORK_URL</span> — the live network hub. Your node fetches the hub's AXL public key and routes observations to it directly over the Gensyn mesh.</div>
         </div>
       </Step>
 
-      <Step n={3} title="Start your AXL node" subtitle="Connect to the Gensyn P2P mesh — this broadcasts your observations to other nodes">
+      <Step n={3} title="Build and start your AXL node" subtitle="Connects you to the Gensyn P2P mesh">
         <div style={{ marginTop: '14px', fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>
-          Build AXL from source (requires Go 1.25+):
+          Build AXL from source:
         </div>
         <CopyBlock code={`git clone https://github.com/gensyn-ai/axl.git
 cd axl
 make build
 openssl genpkey -algorithm ed25519 -out private.pem`} />
         <div style={{ fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px', marginTop: '10px' }}>
-          Create <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>node-config.json</code>:
+          Create <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>node-config.json</code> inside the axl folder:
         </div>
         <CopyBlock label="node-config.json" code={`{
   "PrivateKeyPath": "private.pem",
@@ -225,91 +240,53 @@ openssl genpkey -algorithm ed25519 -out private.pem`} />
   "api_port": 9002
 }`} />
         <div style={{ padding: '10px 14px', background: '#030e06', borderRadius: '6px', border: `1px solid ${C.green}20`, fontSize: '11px', color: C.textDim, lineHeight: '1.6', marginBottom: '10px' }}>
-          <span style={{ color: C.green }}>◈ These are Gensyn's live bootstrap nodes.</span> Your node connects directly to the real Gensyn AXL network — no extra setup needed.
+          <span style={{ color: C.green }}>◈ These are Gensyn's live bootstrap nodes.</span> They route your observations through the mesh to every other connected Vigil node.
         </div>
         <div style={{ fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>Start AXL (Terminal 1):</div>
         <CopyBlock code={`./node -config node-config.json`} />
         <div style={{ marginTop: '8px', padding: '8px 14px', background: C.bg, borderRadius: '6px', border: `1px solid ${C.border}`, fontSize: '11px', color: C.textDim }}>
-          AXL connects to Gensyn's network and starts listening. Your <code style={{ color: '#a78bfa' }}>.env</code> should have <code style={{ color: C.green }}>AXL_URL=http://localhost:9002</code>
+          Look for <code style={{ color: C.green }}>Connected outbound: ...@34.46.48.224:9001</code> — that confirms you're on the Gensyn mesh. Your AXL Public Key is printed as <code style={{ color: '#a78bfa' }}>Our Public Key: xxxx...</code> — save it as your node's cryptographic identity.
         </div>
       </Step>
 
-      <Step n={4} title="Discover smart wallets" subtitle="One-time scan — builds your local wallet watchlist from on-chain Uniswap activity">
+      <Step n={4} title="Discover your wallet set" subtitle="~2 min scan — builds your unique wallet watchlist from on-chain Uniswap activity">
         <div style={{ marginTop: '14px', fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>
           From the <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>agent/</code> directory (Terminal 2):
         </div>
         <CopyBlock code={`cd agent
-python discover.py`} />
+python discover.py --top 100`} />
         <div style={{ padding: '10px 14px', background: '#030e06', borderRadius: '6px', border: `1px solid ${C.green}20`, fontSize: '11px', color: C.textDim, lineHeight: '1.6' }}>
-          <div style={{ marginBottom: '5px' }}><span style={{ color: C.green }}>What this does:</span> Scans the last ~3,000 blocks of Uniswap v3 Swap events, collects real EOA addresses (from <code style={{ color: '#a78bfa' }}>tx.from</code>), scores each wallet by trading frequency and pool diversity, and saves the top 100 to <code style={{ color: '#a78bfa' }}>wallets.json</code>.</div>
-          <div><span style={{ color: C.green }}>Takes ~2 minutes.</span> Only needs to run once. You can re-run it later to refresh your wallet list.</div>
+          Scans Uniswap v3 Swap events from the last ~3,000 blocks, scores wallets by pool diversity, saves top 100 to <code style={{ color: '#a78bfa' }}>wallets.json</code>. This list is yours — independent from every other node on the network.
         </div>
       </Step>
 
-      <Step n={5} title="Start the Vigil node" subtitle="Watches your 100 wallets and shares intelligence over AXL">
+      <Step n={5} title="Start watching" subtitle="Your node joins the live network">
         <div style={{ marginTop: '14px', fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>
-          From <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>agent/</code> (Terminal 2 — same one as Step 4):
+          From <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>agent/</code> (Terminal 2):
         </div>
         <CopyBlock code={`python main.py`} />
-        <div style={{ fontSize: '11px', color: C.textDim, lineHeight: '1.6', marginTop: '10px', marginBottom: '4px' }}>
-          Start the API server in a separate terminal (Terminal 3):
+        <div style={{ padding: '10px 14px', background: '#0a0a14', borderRadius: '6px', border: `1px solid ${C.border}`, fontSize: '11px', color: C.textDim, lineHeight: '1.6', marginTop: '10px' }}>
+          <div style={{ marginBottom: '5px' }}>Look for: <code style={{ color: C.green }}>Discovered remote Vigil node: xxxx... via https://viigil.up.railway.app</code></div>
+          <div>This confirms your node found the network hub and will route observations to it. You don't need to run a local server or dashboard — just open the live dashboard to see your node appear.</div>
         </div>
-        <CopyBlock code={`python server.py`} />
-        <div style={{ padding: '10px 14px', background: '#0a0a14', borderRadius: '6px', border: `1px solid ${C.border}`, fontSize: '11px', color: C.textDim, lineHeight: '1.6' }}>
-          <code style={{ color: '#a78bfa' }}>main.py</code> subscribes to your wallet slice on Ethereum mainnet and broadcasts every inbound token movement to the AXL mesh. <code style={{ color: '#a78bfa' }}>server.py</code> exposes the data to the frontend on port 5050.
-        </div>
-      </Step>
-
-      <Step n={6} title="Open the dashboard" subtitle="Your node is live — watch intelligence flow in real time">
-        <div style={{ marginTop: '14px', fontSize: '12px', color: C.textDim, lineHeight: '1.6', marginBottom: '4px' }}>
-          From the <code style={{ color: '#a78bfa', background: C.bg, padding: '1px 5px', borderRadius: '3px' }}>frontend/</code> directory (Terminal 4):
-        </div>
-        <CopyBlock code={`npm start`} />
-        <div style={{ fontSize: '11px', color: C.textDim, lineHeight: '1.6', marginTop: '10px' }}>
-          Open <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer" style={{ color: C.blue }}>http://localhost:3000</a>. You should see:
-        </div>
-        <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          {[
-            { icon: '◉', color: C.green, text: 'Your NODE ID shows CONNECTED in the Node Status panel' },
-            { icon: '◉', color: C.green, text: 'Live Activity populates within seconds of any watched wallet transacting' },
-            { icon: '◉', color: C.green, text: 'Accumulation tab shows tokens being bought by your wallets' },
-            { icon: '◉', color: C.green, text: 'Signals fire when 2+ distinct wallets accumulate the same token within 20 min' },
-          ].map((item, i) => (
-            <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', padding: '7px 12px', background: C.bg, borderRadius: '6px', border: `1px solid ${C.border}` }}>
-              <span style={{ color: item.color, fontSize: '10px', marginTop: '1px', flexShrink: 0 }}>{item.icon}</span>
-              <span style={{ fontSize: '11px', color: C.textDim, lineHeight: '1.5' }}>{item.text}</span>
-            </div>
-          ))}
+        <div style={{ marginTop: '12px', padding: '10px 14px', background: '#030e06', borderRadius: '6px', border: `1px solid ${C.green}20`, fontSize: '11px', color: C.textDim }}>
+          <span style={{ color: C.green }}>◈ Watch the network at:</span>{' '}
+          <a href={DASHBOARD_URL} target="_blank" rel="noopener noreferrer" style={{ color: C.blue }}>
+            {DASHBOARD_URL}
+          </a>
+          {' '}→ AXL Network tab → Node Contributions. Your NODE_ID and broadcast count appear as soon as your first observation is sent.
         </div>
       </Step>
 
-      {/* How it works explainer */}
+      {/* How it works */}
       <div style={{ marginTop: '32px', marginBottom: '12px', fontSize: '11px', fontWeight: '700', color: C.textDim, letterSpacing: '0.14em' }}>HOW THE NETWORK WORKS</div>
-      <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px',
-        marginBottom: '32px',
-      }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px', marginBottom: '32px' }}>
         {[
-          {
-            icon: '◈', color: C.purple,
-            title: 'Independent watching',
-            body: 'Each node monitors its own wallet slice. No two nodes track identical sets — this creates true redundancy.',
-          },
-          {
-            icon: '⟷', color: C.blue,
-            title: 'AXL P2P broadcast',
-            body: 'Every inbound movement is encrypted and broadcast to all peers over Gensyn\'s AXL mesh — no central server.',
-          },
-          {
-            icon: '✓', color: C.green,
-            title: 'Convergence signals',
-            body: 'A signal fires only when 2+ distinct wallets accumulate the same token within a 20-minute window.',
-          },
+          { icon: '◈', color: C.purple, title: 'Independent watching', body: 'Each node discovers its own wallet set independently. No two nodes track identical wallets — this creates genuine redundancy and harder-to-game signals.' },
+          { icon: '⟷', color: C.blue,   title: 'AXL P2P broadcast',   body: 'Every wallet movement is encrypted and broadcast over the Gensyn AXL mesh. No central server. No shared database. Nodes coordinate without trusting each other.' },
+          { icon: '✓', color: C.green,  title: 'Convergence signals',  body: 'A signal fires only when 2+ distinct wallets accumulate the same token within 20 minutes — across any combination of nodes. More nodes = stronger consensus.' },
         ].map(card => (
-          <div key={card.title} style={{
-            background: C.surface, border: `1px solid ${card.color}20`,
-            borderRadius: '10px', padding: '18px 16px',
-          }}>
+          <div key={card.title} style={{ background: C.surface, border: `1px solid ${card.color}20`, borderRadius: '10px', padding: '18px 16px' }}>
             <div style={{ fontSize: '20px', color: card.color, marginBottom: '10px' }}>{card.icon}</div>
             <div style={{ fontSize: '12px', fontWeight: '700', color: C.text, marginBottom: '7px' }}>{card.title}</div>
             <div style={{ fontSize: '11px', color: C.textDim, lineHeight: '1.6' }}>{card.body}</div>
@@ -317,39 +294,28 @@ python discover.py`} />
         ))}
       </div>
 
-      {/* Terminal quick-reference */}
-      <div style={{ fontSize: '11px', fontWeight: '700', color: C.textDim, letterSpacing: '0.14em', marginBottom: '14px' }}>QUICK REFERENCE — ALL 4 TERMINALS</div>
-      <div style={{
-        background: '#030308', border: `1px solid ${C.border}`,
-        borderRadius: '10px', overflow: 'hidden',
-      }}>
+      {/* Quick reference */}
+      <div style={{ fontSize: '11px', fontWeight: '700', color: C.textDim, letterSpacing: '0.14em', marginBottom: '14px' }}>QUICK REFERENCE — 2 TERMINALS</div>
+      <div style={{ background: '#030308', border: `1px solid ${C.border}`, borderRadius: '10px', overflow: 'hidden' }}>
         {[
-          { n: 'T1', label: 'AXL node (P2P mesh)',     cmd: './axl -config axl-config.yaml',          color: C.blue },
-          { n: 'T2', label: 'Vigil node (watcher)',     cmd: 'cd agent && python main.py',             color: C.purple },
-          { n: 'T3', label: 'API server (frontend)',    cmd: 'cd agent && python server.py',           color: C.yellow },
-          { n: 'T4', label: 'Dashboard (React)',        cmd: 'cd frontend && npm start',               color: C.green },
+          { n: 'T1', label: 'AXL node (P2P mesh)',  cmd: 'cd axl && ./node -config node-config.json', color: C.blue },
+          { n: 'T2', label: 'Vigil node (watcher)', cmd: 'cd agent && python main.py',               color: C.purple },
         ].map((row, i, arr) => (
           <div key={row.n} style={{
             display: 'grid', gridTemplateColumns: '36px 180px 1fr',
-            alignItems: 'center', gap: '12px',
-            padding: '12px 16px',
+            alignItems: 'center', gap: '12px', padding: '12px 16px',
             borderBottom: i < arr.length - 1 ? `1px solid ${C.border}` : 'none',
           }}>
-            <span style={{
-              fontSize: '10px', fontWeight: '700', color: row.color,
-              background: row.color + '18', border: `1px solid ${row.color}30`,
-              padding: '2px 6px', borderRadius: '4px', textAlign: 'center',
-            }}>{row.n}</span>
+            <span style={{ fontSize: '10px', fontWeight: '700', color: row.color, background: row.color + '18', border: `1px solid ${row.color}30`, padding: '2px 6px', borderRadius: '4px', textAlign: 'center' }}>{row.n}</span>
             <span style={{ fontSize: '11px', color: C.textDim }}>{row.label}</span>
             <code style={{ fontFamily: 'monospace', fontSize: '12px', color: '#a78bfa' }}>{row.cmd}</code>
           </div>
         ))}
       </div>
 
-      {/* Footer note */}
       <div style={{ marginTop: '28px', padding: '16px 20px', background: C.surface, borderRadius: '8px', border: `1px solid ${C.border}`, fontSize: '11px', color: C.textDim, lineHeight: '1.7' }}>
-        <span style={{ color: C.purple, fontWeight: '600' }}>◈ Contributing to the network</span><br />
-        Your node strengthens every signal. When your wallet slice sees the same token as another node's wallets, the confidence score increases. The more independent nodes confirm a movement, the more trustworthy the signal — and the more valuable the intelligence becomes for everyone.
+        <span style={{ color: C.purple, fontWeight: '600' }}>◈ Your contribution is visible</span><br />
+        Every observation your node broadcasts increments your broadcast count on the live dashboard. When your wallets and another node's wallets independently accumulate the same token, the signal confidence increases — and your NODE_ID is credited in the signal's node list. The network gets more accurate with every independent operator.
       </div>
     </div>
   );
