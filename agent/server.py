@@ -144,10 +144,29 @@ def network():
             node_stats[nid] = {"broadcasts": 0, "tokens": set()}
         node_stats[nid]["broadcasts"] += 1
         node_stats[nid]["tokens"].add(a.get("token_address", ""))
+    import time as _time
+    now = _time.time()
     for n in nodes:
         stats = node_stats.get(n["id"], {})
         n["broadcasts"] = stats.get("broadcasts", 0)
         n["unique_tokens"] = len(stats.get("tokens", set()))
+
+    # Add any Vigil nodes seen in activity that aren't already in the topology nodes
+    topology_ids = {n["id"] for n in nodes}
+    for nid, stats in node_stats.items():
+        if not nid or nid in topology_ids:
+            continue
+        last_ts = max((a.get("timestamp", 0) for a in activities if a.get("node_id") == nid), default=0)
+        nodes.append({
+            "id": nid,
+            "online": (now - last_ts) < 1800,  # online if active in last 30 min
+            "peers": 0,
+            "public_key": "",
+            "is_self": False,
+            "node_type": "vigil",
+            "broadcasts": stats["broadcasts"],
+            "unique_tokens": len(stats["tokens"]),
+        })
 
     # Build message flow: observations + consensus events merged and sorted
     messages = []
