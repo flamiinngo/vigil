@@ -18,7 +18,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-AXL_BASE_URL = os.getenv("AXL_URL", "http://localhost:9002")
+AXL_BASE_URL = (
+    os.getenv("AXL_URL")
+    or ("http://amusing-gentleness.railway.internal:9002" if os.getenv("RAILWAY_ENVIRONMENT") else None)
+    or "http://localhost:9002"
+)
 NODE_ID = os.getenv("NODE_ID", "vigil-node-1")
 
 # Cache of peer IDs discovered from /topology
