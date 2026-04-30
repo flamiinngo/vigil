@@ -96,6 +96,18 @@ def network():
             "node_type": "vigil",
         })
 
+        # Collect AXL keys of known remote Vigil nodes
+        known_vigil_keys = set()
+        remote_urls = [u.strip() for u in os.getenv("VIGIL_NETWORK_URL", "").split(",") if u.strip()]
+        for url in remote_urls:
+            try:
+                with urllib.request.urlopen(f"{url.rstrip('/')}/axl-status", timeout=3) as rv:
+                    rd = json.loads(rv.read())
+                    if rd.get("online") and rd.get("our_public_key"):
+                        known_vigil_keys.add(rd["our_public_key"])
+            except Exception:
+                pass
+
         for i, p in enumerate(peers_raw):
             if isinstance(p, dict):
                 pk = p.get("public_key") or p.get("PublicKey") or ""
@@ -105,6 +117,7 @@ def network():
                 addr = ""
             ip = addr.split("@")[-1].split(":")[0] if "@" in addr else ""
             is_bootstrap = ip in GENSYN_BOOTSTRAP_IPS
+            is_vigil = pk in known_vigil_keys
             nodes.append({
                 "id": pk[:16] if pk else f"peer-{i}",
                 "online": True,
@@ -112,7 +125,7 @@ def network():
                 "public_key": pk[:20] if pk else "",
                 "address": addr,
                 "is_self": False,
-                "node_type": "gensyn" if is_bootstrap else "vigil",
+                "node_type": "vigil" if is_vigil else "gensyn",
             })
     except Exception:
         nodes.append({
